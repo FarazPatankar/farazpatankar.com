@@ -5,12 +5,12 @@ import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   return (
-    <Flex as="header" width="full" align="center">
+    <Flex as="header" width="full" align="center" justify="space-between">
       <Heading as="h1" size="md">
-        <Link href="/">nextarter-chakra</Link>
+        <Link href="/">farazpatankar</Link>
       </Heading>
 
-      <Box marginLeft="auto">
+      <Box>
         <ThemeToggle />
       </Box>
     </Flex>

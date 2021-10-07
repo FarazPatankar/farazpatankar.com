@@ -1,13 +1,13 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 const defaultSEOConfig = {
-  title: "nextarter-chakra",
-  titleTemplate: "%s | nextarter-chakra",
-  defaultTitle: "nextarter-chakra",
+  title: "Faraz Patankar",
+  titleTemplate: "%s | Faraz Patankar",
+  defaultTitle: "Faraz Patankar",
   description: "Next.js + chakra-ui + TypeScript template",
-  canonical: "https://nextarter-chakra.sznm.dev",
+  canonical: "https://farazpatankar.com",
   openGraph: {
-    url: "https://nextarter-chakra.sznm.dev",
-    title: "nextarter-chakra",
+    url: "https://farazpatankar.com",
+    title: "Faraz Patankar",
     description: "Next.js + chakra-ui + TypeScript template",
     images: [
       {
@@ -15,10 +15,10 @@ const defaultSEOConfig = {
         alt: "nextarter-chakra.sznm.dev og-image",
       },
     ],
-    site_name: "nextarter-chakra",
+    site_name: "farazpatankar",
   },
   twitter: {
-    handle: "@sozonome",
+    handle: "@farazpatankar13",
     cardType: "summary_large_image",
   },
 };
