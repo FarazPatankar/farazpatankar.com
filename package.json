@@ -23,6 +23,7 @@
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@fontsource/lexend": "^4.5.1",
+    "@notionhq/client": "0.3.3",
     "framer-motion": "^4.1.17",
     "next": "^11.1.2",
     "next-pwa": "^5.3.1",
@@ -32,12 +33,9 @@
     "react-feather": "^2.0.9"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^13.1.0",
     "@types/react": "^17.0.24",
-    "commitlint": "^13.1.0",
-    "eslint": "^7.32.0",
-    "eslint-config-next": "^11.1.2",
-    "eslint-config-sznm": "^0.1.7",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
     "next-sitemap": "^1.6.168",

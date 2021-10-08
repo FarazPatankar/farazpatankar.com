@@ -4,7 +4,6 @@
  * ref: https://github.com/vercel/next.js/issues/13712#issuecomment-910409023
  * */
 import createEmotionServer from "@emotion/server/create-instance";
-// eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, {
   Html,
   Head,
@@ -27,7 +26,7 @@ class MyDocument extends Document {
 
     ctx.renderPage = () =>
       originalRenderPage({
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // eslint-disable-next-line react/display-name
         enhanceApp: (App: any) => (props) =>
           <App emotionCache={cache} {...props} />,
       });
