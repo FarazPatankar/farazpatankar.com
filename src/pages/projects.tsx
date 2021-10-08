@@ -7,14 +7,14 @@ import { PostProps } from "@types/notion";
 import { NotionText } from "@components/core/NotionText";
 import Layout from "@components/layout";
 
-const Posts: React.FC<{ posts: PostProps[] }> = ({ posts }) => {
+const Projects: React.FC<{ projects: PostProps[] }> = ({ projects }) => {
   return (
-    <Layout seo={{ title: "Posts" }}>
+    <Layout seo={{ title: "Projects" }}>
       <Box mb={8} w="full">
         <ol>
-          {posts.map((post) => (
-            <li key={post.id}>
-              <NotionText text={post.properties.Title.title} />
+          {projects.map((project) => (
+            <li key={project.id}>
+              <NotionText text={project.properties.Title.title} />
             </li>
           ))}
         </ol>
@@ -24,14 +24,14 @@ const Posts: React.FC<{ posts: PostProps[] }> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getDatabase(process.env.POSTS_TABLE_ID as string);
+  const projects = await getDatabase(process.env.PROJECTS_TABLE_ID as string);
 
   return {
     props: {
-      posts,
+      projects,
     },
     revalidate: 1,
   };
 };
 
-export default Posts;
+export default Projects;
