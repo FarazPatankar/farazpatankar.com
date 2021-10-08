@@ -6,18 +6,20 @@ import { PostProps } from "@types/notion";
 
 import { NotionText } from "@components/core/NotionText";
 import Layout from "@components/layout";
+import { Link } from "@components/core/Link";
 
 const Posts: React.FC<{ posts: PostProps[] }> = ({ posts }) => {
   return (
     <Layout seo={{ title: "Posts" }}>
       <Box mb={8} w="full">
-        <ol>
-          {posts.map((post) => (
-            <li key={post.id}>
-              <NotionText text={post.properties.Title.title} />
-            </li>
-          ))}
-        </ol>
+        {posts.map((post) => (
+          <Link
+            key={post.id}
+            href={`/p/${post.properties.Slug.rich_text[0].plain_text}`}
+          >
+            <NotionText text={post.properties.Title.title} />
+          </Link>
+        ))}
       </Box>
     </Layout>
   );

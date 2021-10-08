@@ -1,4 +1,5 @@
 import { Client } from "@notionhq/client";
+import { PostProps } from "@types/notion";
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -8,12 +9,14 @@ export const getDatabase = async (databaseId: string) => {
   const response = await notion.databases.query({
     database_id: databaseId,
   });
-  return response.results;
+
+  return response.results as unknown as PostProps[];
 };
 
 export const getPage = async (pageId: string) => {
   const response = await notion.pages.retrieve({ page_id: pageId });
-  return response;
+
+  return response as unknown as PostProps;
 };
 
 export const getBlocks = async (blockId: string) => {

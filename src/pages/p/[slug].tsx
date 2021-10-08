@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import {
   Box,
@@ -13,8 +14,10 @@ import { Page, Block } from "@notionhq/client/build/src/api-types";
 import {} from "@notionhq/client/build/src/index";
 
 import { getBlocks, getDatabase, getPage } from "@lib/notion";
+import { PostProps } from "@types/notion";
+
 import { NotionText } from "@components/core/NotionText";
-import { Fragment } from "react";
+import Layout from "@components/layout";
 
 const renderBlock = (block: Block) => {
   const { type, id } = block;
@@ -106,18 +109,20 @@ const renderBlock = (block: Block) => {
 
 const Post: React.FC<{ page: Page; blocks: Block[] }> = ({ page, blocks }) => {
   return (
-    <Box as="article">
-      <Heading>
-        <NotionText text={page.properties.Title.title} />
-      </Heading>
-      <Box as="section">
-        <Stack spacing={5}>
-          {blocks.map((block) => (
-            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-          ))}
-        </Stack>
+    <Layout>
+      <Box as="article">
+        <Heading>
+          <NotionText text={page.properties.Title.title} />
+        </Heading>
+        <Box as="section">
+          <Stack spacing={5}>
+            {blocks.map((block) => (
+              <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+            ))}
+          </Stack>
+        </Box>
       </Box>
-    </Box>
+    </Layout>
   );
 };
 
@@ -125,7 +130,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getDatabase(process.env.POSTS_TABLE_ID as string);
 
   return {
-    paths: posts.map((page) => ({ params: { id: page.id } })),
+    paths: posts.map((page) => ({
+      params: { slug: page.properties.Slug.rich_text[0].plain_text },
+    })),
     fallback: true,
   };
 };
@@ -138,9 +145,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
     };
   }
 
-  const id = params.id as string;
-  const page = await getPage(id);
-  const blocks = await getBlocks(id);
+  const posts = await getDatabase(process.env.POSTS_TABLE_ID as string);
+  const slug = params.slug as string;
+  const post = posts.find(
+    (post) => post.properties.Slug.rich_text[0].plain_text === slug
+  );
+  if (post == null) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const page = await getPage(post.id);
+  console.log("page", page);
+  const blocks = await getBlocks(post.id);
 
   const childBlocks = await Promise.all(
     blocks
