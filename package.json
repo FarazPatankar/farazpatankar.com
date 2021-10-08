@@ -1,8 +1,8 @@
 {
-  "name": "nextarter-chakra",
+  "name": "farazpatankar",
   "version": "0.1.0",
   "private": true,
-  "author": "sozonome",
+  "author": "farazpatankar",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

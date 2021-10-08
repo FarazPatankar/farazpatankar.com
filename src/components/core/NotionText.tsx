@@ -25,7 +25,9 @@ interface TextProps {
   type: string;
 }
 
-export const Text: React.FC<{ text: TextProps[] | null }> = ({ text }) => {
+export const NotionText: React.FC<{ text: TextProps[] | null }> = ({
+  text,
+}) => {
   if (text == null) {
     return null;
   }

@@ -1,7 +1,7 @@
 import { Flex, Text, Icon } from "@chakra-ui/react";
 import { Heart, Code } from "react-feather";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <Flex as="footer" width="full" align="center" justify="center">
       <Text>
@@ -11,5 +11,3 @@ const Footer = () => {
     </Flex>
   );
 };
-
-export default Footer;

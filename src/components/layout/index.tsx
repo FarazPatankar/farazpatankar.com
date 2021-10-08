@@ -1,24 +1,24 @@
 import { Box } from "@chakra-ui/react";
-import { ReactNode } from "react";
+import { NextSeo, NextSeoProps } from "next-seo";
 
-import Footer from "./Footer";
-import Header from "./Header";
+import { Footer } from "./Footer";
+import { Header } from "./Header";
 
-type LayoutProps = {
-  children: ReactNode;
-};
-
-const Layout = ({ children }: LayoutProps) => {
+interface Props {
+  seo?: NextSeoProps;
+}
+const Layout: React.FC<Props> = ({ seo, children }) => {
   return (
-    <Box margin="0 auto" maxWidth={800} transition="0.5s ease-out">
-      <Box margin="8">
-        <Header />
-        <Box as="main" marginY={22}>
-          {children}
+    <>
+      <NextSeo {...seo} />
+      <Box margin="0 auto" maxWidth="3xl" transition="0.5s ease-out">
+        <Box margin="8">
+          <Header />
+          <Box as="main">{children}</Box>
+          <Footer />
         </Box>
-        <Footer />
       </Box>
-    </Box>
+    </>
   );
 };
 

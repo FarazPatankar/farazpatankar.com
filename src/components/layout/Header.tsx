@@ -1,20 +1,33 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
-import Link from "next/link";
+import { Box, Flex, Heading, HStack, Link } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 import ThemeToggle from "./ThemeToggle";
 
-const Header = () => {
+interface Props {
+  href: string;
+}
+const NavItem: React.FC<Props> = ({ href, children }) => {
+  return (
+    <NextLink href={href}>
+      <Link>{children}</Link>
+    </NextLink>
+  );
+};
+
+export const Header = () => {
   return (
     <Flex as="header" width="full" align="center" justify="space-between">
       <Heading as="h1" size="md">
-        <Link href="/">farazpatankar</Link>
+        <NextLink href="/">farazpatankar</NextLink>
       </Heading>
 
       <Box>
-        <ThemeToggle />
+        <HStack spacing="5">
+          <NavItem href="/projects">Projects</NavItem>
+          <Link href="/posts">Posts</Link>
+          <ThemeToggle />
+        </HStack>
       </Box>
     </Flex>
   );
 };
-
-export default Header;

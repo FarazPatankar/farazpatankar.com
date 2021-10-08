@@ -13,7 +13,7 @@ import { Page, Block } from "@notionhq/client/build/src/api-types";
 import {} from "@notionhq/client/build/src/index";
 
 import { getBlocks, getDatabase, getPage } from "@lib/notion";
-import { Text } from "@components/core/Text";
+import { NotionText } from "@components/core/NotionText";
 import { Fragment } from "react";
 
 const renderBlock = (block: Block) => {
@@ -24,28 +24,28 @@ const renderBlock = (block: Block) => {
     case "paragraph": {
       return (
         <ChakraText>
-          <Text text={value.text} />
+          <NotionText text={value.text} />
         </ChakraText>
       );
     }
     case "heading_1": {
       return (
         <Heading as="h1" size="2xl">
-          <Text text={value.text} />
+          <NotionText text={value.text} />
         </Heading>
       );
     }
     case "heading_2": {
       return (
         <Heading as="h2" size="xl">
-          <Text text={value.text} />
+          <NotionText text={value.text} />
         </Heading>
       );
     }
     case "heading_3": {
       return (
         <Heading as="h3" size="lg">
-          <Text text={value.text} />
+          <NotionText text={value.text} />
         </Heading>
       );
     }
@@ -61,7 +61,7 @@ const renderBlock = (block: Block) => {
         <Alert rounded="lg">
           <AlertIcon />
           <AlertDescription fontSize="sm">
-            <Text text={value.text} />
+            <NotionText text={value.text} />
           </AlertDescription>
         </Alert>
       );
@@ -74,7 +74,7 @@ const renderBlock = (block: Block) => {
        */
       return (
         <Box as="li">
-          <Text text={value.text} />
+          <NotionText text={value.text} />
         </Box>
       );
     }
@@ -108,7 +108,7 @@ const Post: React.FC<{ page: Page; blocks: Block[] }> = ({ page, blocks }) => {
   return (
     <Box as="article">
       <Heading>
-        <Text text={page.properties.Title.title} />
+        <NotionText text={page.properties.Title.title} />
       </Heading>
       <Box as="section">
         <Stack spacing={5}>
