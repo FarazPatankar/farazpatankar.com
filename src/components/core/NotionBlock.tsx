@@ -16,6 +16,7 @@ interface Props {
 }
 export const RenderBlock: React.FC<Props> = ({ block }) => {
   const { type, id } = block;
+  // @ts-ignore
   const value = block[type];
 
   switch (type) {

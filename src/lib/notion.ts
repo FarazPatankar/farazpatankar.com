@@ -49,7 +49,9 @@ export const mapDatabaseItemToPageProps = async (id: string) => {
   );
 
   const blocksWithChildren = blocks.map((block) => {
+    // @ts-ignore
     if (block.has_children && !block[block.type].children) {
+      // @ts-ignore
       block[block.type]["children"] = childBlocks.find(
         (childBlock) => (childBlock.id = block.id)
       )?.children;

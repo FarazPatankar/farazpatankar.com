@@ -54,6 +54,7 @@ const Projects: React.FC<{ projects: PostProps[] }> = ({ projects }) => {
               )}
             </Heading>
             <Image
+              // @ts-ignore
               src={project.properties.Image.files[0].file.url}
               alt={project.properties.Image.files[0].name}
               width="full"

@@ -12,7 +12,11 @@ interface Props {
   page: PostProps;
   blocks: Block[];
 }
-export const PostContent: React.FC<Props> = ({ blocks, page }) => {
+export const PostContent: React.FC<Props> = ({ page, blocks }) => {
+  if (page == null || blocks == null) {
+    return null;
+  }
+
   return (
     <Layout seo={{ title: page.properties.Title.title[0].plain_text }}>
       <Box as="article">
