@@ -26,3 +26,37 @@ export const getBlocks = async (blockId: string) => {
   });
   return response.results;
 };
+
+export const mapDatabaseToPaths = (database: PostProps[]) => {
+  return database.map((item) => {
+    return { params: { slug: item.properties.Slug.rich_text[0].plain_text } };
+  });
+};
+
+export const mapDatabaseItemToPageProps = async (id: string) => {
+  const page = await getPage(id);
+  const blocks = await getBlocks(id);
+
+  const childBlocks = await Promise.all(
+    blocks
+      .filter((block) => block.has_children)
+      .map(async (block) => {
+        return {
+          id: block.id,
+          children: await getBlocks(block.id),
+        };
+      })
+  );
+
+  const blocksWithChildren = blocks.map((block) => {
+    if (block.has_children && !block[block.type].children) {
+      block[block.type]["children"] = childBlocks.find(
+        (childBlock) => (childBlock.id = block.id)
+      )?.children;
+    }
+
+    return block;
+  });
+
+  return { page, blocks: blocksWithChildren };
+};

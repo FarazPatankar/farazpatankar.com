@@ -9,9 +9,9 @@ const getEmoji = () => EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
 const Home = () => {
   return (
     <Layout seo={{ title: "Home" }}>
-      <VStack marginY="20" spacing="6" alignItems="start">
+      <VStack marginY="12" spacing="6" alignItems="start">
         <HStack alignItems="center" spacing="3">
-          <Text fontSize="2xl">{getEmoji()}</Text>
+          <Text fontSize="3xl">{getEmoji()}</Text>
           <Heading>Hey!</Heading>
         </HStack>
         <VStack spacing="3">

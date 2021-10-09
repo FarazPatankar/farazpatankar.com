@@ -1,12 +1,13 @@
 import {
   Page,
+  TitlePropertyValue,
   RichTextPropertyValue,
   DatePropertyValue,
   FilesPropertyValue,
 } from "@notionhq/client/build/src/api-types";
 
 interface PostProperties {
-  Title: any;
+  Title: TitlePropertyValue;
   Slug: RichTextPropertyValue;
   Date: DatePropertyValue;
   Image: FilesPropertyValue;

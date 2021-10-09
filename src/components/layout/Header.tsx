@@ -25,6 +25,7 @@ export const Header = () => {
         <HStack spacing="5">
           <NavItem href="/projects">Projects</NavItem>
           <Link href="/posts">Posts</Link>
+          <Link href="/recipes">Recipes</Link>
           <ThemeToggle />
         </HStack>
       </Box>

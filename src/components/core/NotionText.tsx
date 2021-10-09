@@ -14,13 +14,13 @@ interface TextProps {
     code: boolean;
     color: string;
   };
-  href: string | null;
+  href?: string;
   plain_text: string;
-  text: {
+  text?: {
     content: string;
-    link: {
+    link?: {
       url: string;
-    } | null;
+    };
   };
   type: string;
 }
@@ -39,6 +39,10 @@ export const NotionText: React.FC<{ text: TextProps[] | null }> = ({
           annotations: { bold, code, color, italic, strikethrough, underline },
           text,
         } = value;
+        if (text == null) {
+          return null;
+        }
+
         return (
           <Fragment key={idx}>
             {text.link ? (

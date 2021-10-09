@@ -11,10 +11,12 @@ const Layout: React.FC<Props> = ({ seo, children }) => {
   return (
     <>
       <NextSeo {...seo} />
-      <Box margin="0 auto" maxWidth="3xl" transition="0.5s ease-out">
+      <Box marginX="auto" maxWidth="3xl" transition="0.5s ease-out">
         <Box margin="8">
           <Header />
-          <Box as="main">{children}</Box>
+          <Box as="main" marginY="8">
+            {children}
+          </Box>
           <Footer />
         </Box>
       </Box>
