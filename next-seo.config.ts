@@ -22,6 +22,8 @@ const defaultSEOConfig: DefaultSeoProps = {
     handle: "@farazpatankar13",
     cardType: "summary_large_image",
   },
+  dangerouslySetAllPagesToNoIndex: true,
+  dangerouslySetAllPagesToNoFollow: true,
 };
 
 export default defaultSEOConfig;
