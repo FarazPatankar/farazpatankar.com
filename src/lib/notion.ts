@@ -1,5 +1,5 @@
 import { Client } from "@notionhq/client";
-import { PostProps } from "@types/notion";
+import { PostProps } from "@customTypes/notion";
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,

@@ -4,6 +4,7 @@ import {
   RichTextPropertyValue,
   DatePropertyValue,
   FilesPropertyValue,
+  URLPropertyValue,
 } from "@notionhq/client/build/src/api-types";
 
 interface PostProperties {
@@ -11,6 +12,8 @@ interface PostProperties {
   Slug: RichTextPropertyValue;
   Date: DatePropertyValue;
   Image: FilesPropertyValue;
+  Description: RichTextPropertyValue;
+  Url?: URLPropertyValue;
 }
 
 /**

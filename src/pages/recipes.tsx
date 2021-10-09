@@ -1,24 +1,26 @@
 import { GetStaticProps } from "next";
-import { Box } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 
 import { getDatabase } from "@lib/notion";
-import { PostProps } from "@types/notion";
+import { PostProps } from "@customTypes/notion";
 
-import { NotionText } from "@components/core/NotionText";
 import Layout from "@components/layout";
+import { PostItem } from "@components/posts/PostItem";
 
 const Recipes: React.FC<{ recipes: PostProps[] }> = ({ recipes }) => {
   return (
-    <Layout seo={{ title: "Recipes" }}>
-      <Box mb={8} w="full">
-        <ol>
-          {recipes.map((recipe) => (
-            <li key={recipe.id}>
-              <NotionText text={recipe.properties.Title.title} />
-            </li>
-          ))}
-        </ol>
-      </Box>
+    <Layout
+      seo={{
+        title: "Recipes",
+        description:
+          "(Hopefully) a not-so-tiny collection of recipes I find myself cooking every so often.",
+      }}
+    >
+      <VStack mb={8} w="full" alignItems="start" spacing="8">
+        {recipes.map((recipe) => (
+          <PostItem key={recipe.id} post={recipe} resource="recipe" />
+        ))}
+      </VStack>
     </Layout>
   );
 };

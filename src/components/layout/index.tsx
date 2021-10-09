@@ -14,7 +14,7 @@ const Layout: React.FC<Props> = ({ seo, children }) => {
       <Box marginX="auto" maxWidth="3xl" transition="0.5s ease-out">
         <Box margin="8">
           <Header />
-          <Box as="main" marginY="8">
+          <Box as="main" mt="8" mb="16">
             {children}
           </Box>
           <Footer />

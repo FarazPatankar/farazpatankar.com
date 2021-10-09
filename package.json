@@ -24,6 +24,7 @@
     "@emotion/styled": "^11.3.0",
     "@fontsource/lexend": "^4.5.1",
     "@notionhq/client": "0.3.3",
+    "dayjs": "^1.10.7",
     "framer-motion": "^4.1.17",
     "next": "^11.1.2",
     "next-pwa": "^5.3.1",

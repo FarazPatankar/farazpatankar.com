@@ -1,24 +1,67 @@
 import { GetStaticProps } from "next";
-import { Box } from "@chakra-ui/react";
+import { VStack, Text, Heading, Image } from "@chakra-ui/react";
 
 import { getDatabase } from "@lib/notion";
-import { PostProps } from "@types/notion";
+import { PostProps } from "@customTypes/notion";
 
 import { NotionText } from "@components/core/NotionText";
 import Layout from "@components/layout";
+import { TitleLink } from "@components/core/Link";
 
 const Projects: React.FC<{ projects: PostProps[] }> = ({ projects }) => {
   return (
-    <Layout seo={{ title: "Projects" }}>
-      <Box mb={8} w="full">
-        <ol>
-          {projects.map((project) => (
-            <li key={project.id}>
-              <NotionText text={project.properties.Title.title} />
-            </li>
-          ))}
-        </ol>
-      </Box>
+    <Layout
+      seo={{
+        title: "Projects",
+        description:
+          "Everything I've ever built. Well, at least the stuff that's still online.",
+      }}
+    >
+      <VStack alignItems="start" spacing="8">
+        <Heading>Projects</Heading>
+        <VStack alignItems="start">
+          <Text>
+            I love building side projects. They&apos;re great for a bunch of
+            reasons. Want to learn a new programming language? Build a side
+            project. Want to try a new platform to deploy your app to? Build a
+            side project. Want to try this shiny new CSS framework? Yes, you
+            guessed it. Build a side project!
+          </Text>
+          <Text>
+            I&apos;ve built several of these over the past year or so. The
+            domains have expired on some of them so they aren&apos;t online
+            anymore but thanks to services like Netlify, most of my new ones are
+            still up and will probably always be. So without further ado,
+            let&apos;s take a look at them!
+          </Text>
+        </VStack>
+      </VStack>
+
+      <VStack mt="16" spacing="16">
+        {projects.reverse().map((project) => (
+          <VStack key={project.id} alignItems="start" spacing="8">
+            <Heading>
+              {project.properties.Url?.url ? (
+                <TitleLink
+                  isExternal
+                  href={project.properties.Url!.url}
+                  textDecoration="underline"
+                >
+                  {project.properties.Title.title[0].plain_text}
+                </TitleLink>
+              ) : (
+                <>{project.properties.Title.title[0].plain_text}</>
+              )}
+            </Heading>
+            <Image
+              src={project.properties.Image.files[0].file.url}
+              alt={project.properties.Image.files[0].name}
+              width="full"
+            />
+            <NotionText text={project.properties.Description.rich_text} />
+          </VStack>
+        ))}
+      </VStack>
     </Layout>
   );
 };

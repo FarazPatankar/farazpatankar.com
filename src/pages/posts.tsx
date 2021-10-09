@@ -1,26 +1,26 @@
 import { GetStaticProps } from "next";
-import { Box } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 
 import { getDatabase } from "@lib/notion";
-import { PostProps } from "@types/notion";
+import { PostProps } from "@customTypes/notion";
 
-import { NotionText } from "@components/core/NotionText";
 import Layout from "@components/layout";
-import { Link } from "@components/core/Link";
+import { PostItem } from "@components/posts/PostItem";
 
 const Posts: React.FC<{ posts: PostProps[] }> = ({ posts }) => {
   return (
-    <Layout seo={{ title: "Posts" }}>
-      <Box mb={8} w="full">
+    <Layout
+      seo={{
+        title: "Posts",
+        description:
+          "A limited collection of posts I've someone managed to make myself publish.",
+      }}
+    >
+      <VStack mb={8} w="full" alignItems="start" spacing="8">
         {posts.map((post) => (
-          <Link
-            key={post.id}
-            href={`/p/${post.properties.Slug.rich_text[0].plain_text}`}
-          >
-            <NotionText text={post.properties.Title.title} />
-          </Link>
+          <PostItem key={post.id} post={post} resource="post" />
         ))}
-      </Box>
+      </VStack>
     </Layout>
   );
 };
