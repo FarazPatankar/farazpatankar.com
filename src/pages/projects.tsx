@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { VStack, Text, Heading, Image } from "@chakra-ui/react";
+import { VStack, Text, Heading, Img } from "@chakra-ui/react";
 
 import { getDatabase } from "@lib/notion";
 import { PostProps } from "@customTypes/notion";
@@ -53,10 +53,11 @@ const Projects: React.FC<{ projects: PostProps[] }> = ({ projects }) => {
                 <>{project.properties.Title.title[0].plain_text}</>
               )}
             </Heading>
-            <Image
+            <Img
               // @ts-ignore
               src={project.properties.Image.files[0].file.url}
               alt={project.properties.Image.files[0].name}
+              height="auto"
               width="full"
             />
             <NotionText text={project.properties.Description.rich_text} />
