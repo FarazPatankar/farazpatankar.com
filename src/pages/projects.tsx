@@ -71,9 +71,18 @@ const Projects: React.FC<{ projects: PostProps[] }> = ({ projects }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const projects = await getDatabase(process.env.PROJECTS_TABLE_ID as string);
 
+  /**
+   * Assuming dates will always be present
+   */
+  const sortedProjects = projects.sort(
+    (projectA, projectB) =>
+      new Date(projectA.properties.Date.date!.start).getTime() -
+      new Date(projectB.properties.Date.date!.start).getTime()
+  );
+
   return {
     props: {
-      projects,
+      projects: sortedProjects,
     },
     revalidate: 1,
   };
