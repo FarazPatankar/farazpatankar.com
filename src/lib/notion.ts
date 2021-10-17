@@ -10,7 +10,8 @@ export const getDatabase = async (databaseId: string) => {
     database_id: databaseId,
   });
 
-  return response.results as unknown as PostProps[];
+  const results = response.results as unknown as PostProps[];
+  return results.filter((result) => result.properties.Published.checkbox);
 };
 
 export const getPage = async (pageId: string) => {

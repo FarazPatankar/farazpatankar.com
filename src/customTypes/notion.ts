@@ -5,6 +5,7 @@ import {
   DatePropertyValue,
   FilesPropertyValue,
   URLPropertyValue,
+  CheckboxPropertyValue,
 } from "@notionhq/client/build/src/api-types";
 
 interface PostProperties {
@@ -13,6 +14,7 @@ interface PostProperties {
   Date: DatePropertyValue;
   Image: FilesPropertyValue;
   Description: RichTextPropertyValue;
+  Published: CheckboxPropertyValue;
   Url?: URLPropertyValue;
 }
 
