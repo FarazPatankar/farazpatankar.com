@@ -774,10 +774,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/lexend@^4.5.1":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@fontsource/lexend/-/lexend-4.5.1.tgz#905f5ed1f3f40e7150b79d6c11e7b4839977999e"
-  integrity sha512-opFE25zKj2vo978f+QWgID9K4qMsPE6S59RRuwOcyuVL0pBbTErYUVWxfHn8kgDGyy99w+vwxoKI2hGqCHeN2g==
+"@fontsource/poppins@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-4.5.0.tgz#a419697b85864afbf8363f5c247b1e9d1f117564"
+  integrity sha512-RqgMIQqKHWNH3IUj+a0MAhlb4g5fftsXRTJ2bauefBmfM8Ja5q+qQZjKwyB/iCc+paJD320zFnLJ8G+y1ZyemQ==
 
 "@hapi/accept@5.0.2":
   version "5.0.2"
