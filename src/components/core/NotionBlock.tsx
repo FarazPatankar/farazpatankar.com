@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 
 import { NotionText } from "@components/core/NotionText";
+import { CodeBlock } from "@components/core/code-block";
 
 interface Props {
   block: Block;
@@ -90,6 +91,12 @@ export const RenderBlock: React.FC<Props> = ({ block }) => {
           <Image src={source} alt={caption} />
           {caption && <ChakraText as="figcaption">{caption}</ChakraText>}
         </Box>
+      );
+    }
+    // @ts-ignore: Current client version does not support `code` but API does
+    case "code": {
+      return (
+        <CodeBlock language="tsx" code={value.text[0].plain_text} showLines />
       );
     }
     default: {
